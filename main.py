@@ -1,3 +1,4 @@
+import os
 import sys
 import webbrowser
 import pyttsx3
@@ -112,8 +113,14 @@ def schedule():
    }
    if day in week.keys():
       speak(week[day])
-
-
+def openApp(command):
+   if "calculator" in command:
+      speak("opening the Calculator")
+      os.startfile('c:\\Windows\\System32\\calc.exe')
+   elif "notepad" in command:
+      speak("opening the notepad")
+      os.startfile('c:\\Windows\\System32\\notepad.exe')
+   
 if __name__ == "__main__":
     wishMe()
     while True:
@@ -133,7 +140,7 @@ if __name__ == "__main__":
         elif("volume mute" in query or "mute the sound" in query):
             pyautogui.press("volumemute")
             speak("volume muted")
-        elif("opening calculator" in query or "open notepad" in query or "open paint" in query):
+        elif("open calculator" in query or "open notepad" in query):
            openApp(query)
         elif 'exit' in query:
            sys.exit()
