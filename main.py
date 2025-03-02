@@ -142,6 +142,8 @@ if __name__ == "__main__":
             speak("volume muted")
         elif("open calculator" in query or "open notepad" in query):
            openApp(query)
+        elif("close calculator" in query or "close notepad" in query):
+           openApp(query)
         elif 'exit' in query:
            sys.exit()
     
