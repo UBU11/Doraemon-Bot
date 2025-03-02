@@ -1,7 +1,10 @@
+import sys
 import webbrowser
 import pyttsx3
 import speech_recognition as sr
 import datetime
+import pyautogui
+
 
 def initialize():
     engine = pyttsx3.init("sapi5")
@@ -95,6 +98,22 @@ def social_media(command):
         speak("Opening your google")
         webbrowser.open("https://www.google.com")
 
+def schedule():
+   day = cal_day()
+   speak("bruh today's schedule is")
+   week = {
+     "Monday": "Bruh, from 4:00 am to 6:30 am, you have to learn backend in-depth.",
+    "Tuesday": "Bruh, from 4:00 am to 6:30 am, you need to conduct the Tinkerhub event.",
+    "Wednesday": "Bruh, from 4:00 am to 6:30 am, focus on AI and machine learning concepts.",
+    "Thursday": "Bruh, from 4:00 am to 6:30 am, work on your college-specific Flutter app with Firebase.",
+    "Friday": "Bruh, from 4:00 am to 6:30 am, practice data structures and algorithms for hackathons.",
+    "Saturday": "Bruh, from 4:00 am to 6:30 am, study psychology and read self-improvement books.",
+    "Sunday": "Bruh, from 4:00 am to 6:30 am, plan the upcoming week and do project debugging/refinement."
+   }
+   if day in week.keys():
+      speak(week[day])
+
+
 if __name__ == "__main__":
     wishMe()
     while True:
@@ -103,5 +122,20 @@ if __name__ == "__main__":
         query = input("Enter your command: ")
         if ("facebook" in query or "discord" in query or "whatsapp" in query or "instagram" in query or "twitter" in query or "linkedin" in query or "youtube" in query or "reddit" in query or "google" in query):
             social_media(query)
+        elif ("University time table" in  query or ("schedule" in query)):
+           schedule()
+        elif("Volume up" in query or "increase volume" in query):
+           pyautogui.press("volumeup")
+           speak("volume increased")
+        elif("Volume down" in query or "decrease volume" in query):
+           pyautogui.press("volumedown")
+           speak("volume decreased")
+        elif("volume mute" in query or "mute the sound" in query):
+            pyautogui.press("volumemute")
+            speak("volume muted")
+        elif("opening calculator" in query or "open notepad" in query or "open paint" in query):
+           openApp(query)
+        elif 'exit' in query:
+           sys.exit()
     
 
