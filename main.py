@@ -120,7 +120,16 @@ def openApp(command):
    elif "notepad" in command:
       speak("opening the notepad")
       os.startfile('c:\\Windows\\System32\\notepad.exe')
-   
+
+def closeApp(command):
+    if "calculator" in command:
+        speak("Closing Calculator")
+        os.system('taskkill /f /im CalculatorApp.exe')  
+    elif "notepad" in command:
+        speak("Closing Notepad")
+        os.system('taskkill /f /im Notepad.exe')
+
+        
 if __name__ == "__main__":
     wishMe()
     while True:
@@ -143,7 +152,7 @@ if __name__ == "__main__":
         elif("open calculator" in query or "open notepad" in query):
            openApp(query)
         elif("close calculator" in query or "close notepad" in query):
-           openApp(query)
+           closeApp(query)
         elif 'exit' in query:
            sys.exit()
     
